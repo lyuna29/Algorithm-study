@@ -5,13 +5,13 @@
 // 아홉 난쟁이의 키가 주어졌을 때, 백설공주를 도와 일곱 난쟁이를 찾는 프로그램을 작성하시 오.
 function solution(arr) {
   let answer = arr;
-  let sum = answer.reduce((a, b) => a + b, 0);
+  let sum = answer.reduce((a, b) => a + b, 0); //누적해서 더해줌 a를 0으로 초기화
   let flag = 0;
   for (let i = 0; i < 8; i++) {
     for (let j = i + 1; j < 9; j++) {
-      if (sum - (answer[i] + answer[j]) == 100) {
-        answer.splice(j, 1);
-        answer.splice(i, 1);
+      if (sum - (answer[i] + answer[j]) === 100) {
+        answer.splice(j, 1); //j번째의 값을 제거
+        answer.splice(i, 1); //i번쨰의 값을 제거
         flag = 1;
         break;
       }
