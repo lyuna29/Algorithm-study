@@ -19,3 +19,5 @@ function solution(s) {
 
 let str = "ItisTimeToStudy";
 console.log(solution(str));
+
+//알파벳이 32개 -32를 하면 대문자
