@@ -4,6 +4,9 @@ on:
   push:
     branches: ["*"]
 
+permissions:
+  contents: write
+
 jobs:
   create-pr:
     runs-on: ubuntu-20.04
@@ -14,13 +17,19 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Set up Git user
+        run: |
+          git config --global user.name "lyuna29"
+          git config --global user.email "hyunah0418@gmail.com"
+
+      - name: Authenticate using GitHub Token
+        run: |
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+
       - name: Create Dynamic Pull Request
         env:
           GH_TOKEN: ${{ github.token }}
-
         run: |
-
-
           chmod +x auto.sh
           ./auto.sh
           echo "성공"
