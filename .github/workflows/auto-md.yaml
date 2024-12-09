@@ -19,6 +19,8 @@ jobs:
           GH_TOKEN: ${{ github.token }}
 
         run: |
+          git config user.name "lyuna29"
+          git config user.email "hyunah0418@gmail.com"
 
           chmod +x auto.sh
           ./auto.sh
