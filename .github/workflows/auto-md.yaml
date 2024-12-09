@@ -20,6 +20,7 @@ jobs:
 
         run: |
 
+
           chmod +x auto.sh
           ./auto.sh
           echo "성공"
