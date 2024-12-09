@@ -36,7 +36,7 @@ IS_GENERATED_MD=$(git status | grep -e README.md)
 if [ -z "$IS_GENERATED_MD" ]; then
     echo "hi"
 else
-    git commit -m "add : README.md" --author "lyuna <hyunah0418@naver.com>"
+    git commit -m "add : README.md" --author "lyuna <hyunah0418@gmail.com>"
     git remote -v
     git push origin
 fi
