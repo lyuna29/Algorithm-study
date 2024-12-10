@@ -15,8 +15,10 @@ echo "| --- | --- | -- | -- | --- |" >> README.md
 entries=()
 
 for JS_DIR in $JS_DIRS; do
-
-    DATETIME=$(git log --diff-filter=A --format=%ad --date=short -- $JS_DIR)
+   DATETIME=$(git log --diff-filter=A --format=%ad --date=short -- $JS_DIR)
+    if [ -z "$DATETIME" ]; then
+        DATETIME=$(date +%Y-%m-%d)  
+    fi
     title=$(cat $JS_DIR | grep "//title:" | sed -n 's/.*\/\/title:\(.*\)/\1/p')
     level=$(cat $JS_DIR | grep "//level:" | sed -n 's/.*\/\/level:\(.*\)/\1/p')
     etc=$(grep "//etc:" "$JS_DIR" | sed -n 's/.*\/\/etc:\(.*\)/\1/p')
