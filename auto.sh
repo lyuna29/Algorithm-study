@@ -25,7 +25,7 @@ for JS_DIR in $JS_DIRS; do
     entries+=("$DATETIME|$title|$level|[$JS_FILE]($JS_DIR)|$etc")
 
 done
-
+sorted_entries=$(printf "%s\n" "${entries[@]}" | sort)
 for entry in $(printf "%s\n" "${entries[@]}" | sort); do
     IFS="|" read -r date title level file etc <<< "$entry"
     echo "| $title | $level | $file | $date | $etc |" >> README.md
