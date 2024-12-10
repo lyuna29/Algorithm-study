@@ -26,10 +26,10 @@ for JS_DIR in $JS_DIRS; do
 
 done
 sorted_entries=$(printf "%s\n" "${entries[@]}" | sort)
-for entry in $(printf "%s\n" "${entries[@]}" | sort); do
-    IFS="|" read -r date title level file etc <<< "$entry"
-    echo "| $title | $level | $file | $date | $etc |" >> README.md
-done 
+
+while IFS="|" read -r date file title level link etc; do
+    echo "| $title | $level | $link | $date | $etc |" >> README.md
+done <<< "$sorted_entries"
 
 git add .
 IS_GENERATED_MD=$(git status | grep -e README.md)
