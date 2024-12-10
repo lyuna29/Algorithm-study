@@ -22,7 +22,7 @@ for JS_DIR in $JS_DIRS; do
     etc=$(grep "//etc:" "$JS_DIR" | sed -n 's/.*\/\/etc:\(.*\)/\1/p')
     JS_FILE=$(basename $JS_DIR)
     
-     entries+=("$DATETIME|$title|$level|$JS_FILE|[$JS_FILE]($JS_DIR)")
+      entries+=("$DATETIME|$title|$level|[$JS_FILE]($JS_DIR)|$etc")
 
 done
 sorted_entries=$(printf "%s\n" "${entries[@]}" | sort)
